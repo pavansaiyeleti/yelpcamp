@@ -1,0 +1,77 @@
+<% layout('layouts/boilerplate.ejs') %>
+
+    <div class="container justify-content-center align-items-center mt-2 mb-3">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
+                <div class="card shadow">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcvzvTa6I64iYRI02XXFQ3VVPj2mTdDb1sgQ&usqp=CAU"
+                        alt="" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title text-center"><strong>REGISTER</strong></h5>
+                        <form action="/register" method="post" class="needs-validation" novalidate>
+                            <div class="mb-3">
+                                <label class="form-label" for="firstName">First Name:</label>
+                                <input class="form-control" type="text" name="firstName" id="firstName"
+                                    placeholder="first name" autofocus required>
+                                <div class="valid-feedback">
+                                    <span>looks good!</span>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="lastName">Last Name:</label>
+                                <input class="form-control" type="text" name="lastName" id="lastName"
+                                    placeholder="last name" required>
+                                <div class="valid-feedback">
+                                    <span>looks good!</span>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="username">Username</label>
+                                <input class="form-control" type="text" name="username" id="username"
+                                    placeholder="username" required>
+                                <div class="valid-feedback">
+                                    <span>looks good!</span>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="avatar">Avatar Url:</label>
+                                <input class="form-control" type="url" name="avatar" id="avatar"
+                                    placeholder="https://abc.com" pattern="https://.*" required>
+                                <div class="valid-feedback">
+                                    <span>looks good!</span>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="email">Email id</label>
+                                <input class="form-control" type="email" name="email" id="email"
+                                    placeholder="abc@bcd.com" required>
+                                <div class="valid-feedback">
+                                    <span>looks good!</span>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="phoneNo">Phone Number:</label>
+                                <input class="form-control" type="tel" name="phoneNo" id="phoneNo"
+                                    placeholder="1234567890" pattern="^(\+?\d{1,4}[\s-])?(?!0+\s+,?$)\d{10}\s*,?$"
+                                    required>
+                                <div class="valid-feedback">
+                                    <span>looks good!</span>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="password">Password</label>
+                                <input class="form-control" type="password" name="password" id="password"
+                                    placeholder="password" required>
+                                <div class="valid-feedback">
+                                    <span>looks good!</span>
+                                </div>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-success">Register</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

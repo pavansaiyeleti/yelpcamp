@@ -1,0 +1,72 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">YelpCamp</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link " href="/home">Home</a>
+                <a class="nav-link" href="/campgrounds">Campgrounds</a>
+                <a class="nav-link" href="/campgrounds/new">New Campground</a>
+            </div>
+            <div class="navbar-nav ms-auto">
+                <% if(!currentUser){ %>
+                    <a class="nav-link " href="/login">Login</a>
+                    <a class="nav-link " href="/register">Register</a>
+                    <% } else { %>
+                        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                            <ul class="navbar-nav">
+                                <li class="nav-item dropdown me-3">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Notifications <span class="badge bg-info">
+                                            <%= notifications.length %>
+                                        </span>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                        <li>
+                                            <a href="/notifications" class="dropdown-item">View all notifications</a>
+                                        </li>
+                                        <% for(let notification of notifications) { %>
+                                            <li>
+                                                <a href="/notifications/<%= notification._id %>" class="dropdown-item">
+                                                    <% if(notification.notifType==='post' ) {%>
+                                                        <%= notification.username %> created a new campground
+                                                            <% } else if(notification.notifType==='review' ) { %>
+                                                                <%= notification.username %> added a new comment!
+                                                                    <% } else { %>
+                                                                        <%= notification.username %> started following
+                                                                            you!
+                                                                            <% } %>
+                                                                                <br>
+                                                                                <em class="text-muted">
+                                                                                    <%= moment(notification.createdAt).fromNow()
+                                                                                        %>
+                                                                                </em>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <hr class="dropdown-divider">
+                                            </li>
+                                            <li><a class="dropdown-item" href="/notifications/readAll">Read All</a>
+                                            </li>
+                                            <% } %>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <span class="navbar-text text-warning">
+                            Welcome <a href="/users/<%= currentUser._id %>" class="text-decoration-none">
+                                <span class="text-warning">
+                                    <%= currentUser.username %>
+                                </span>
+                            </a>!
+                        </span>
+                        <a class="nav-link " href="/logout">Logout</a>
+                        <% } %>
+            </div>
+        </div>
+    </div>
+</nav>

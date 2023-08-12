@@ -1,0 +1,13 @@
+<% layout('layouts/boilerplate.ejs') %>
+    <div class="container mb-3 d-flex flex-column justify-content-center align-items-center">
+        <h1 class="mb-3">Forgot Password</h1>
+        <form action="/forgot" method="post" class="needs-validation" novalidate>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address:</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    name="email">
+                <div id="emailHelp" class="form-text">Enter Email address associated with your account.</div>
+            </div>
+            <button class="btn btn-warning">Submit</button>
+        </form>
+    </div>

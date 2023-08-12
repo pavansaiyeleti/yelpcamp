@@ -1,0 +1,73 @@
+<% layout('layouts/boilerplate.ejs') %>
+
+    <h1 class="text-center">User Profile</h1>
+    <div class="container d-flex justify-content-center align-items-center mt-3">
+        <div class="card mb-3" style="width:40rem ;">
+            <div class="row g-0 d-flex flex-row justify-content-center align-items-center">
+                <div class="col-md-3">
+                    <img src="<%=(userData.avatar !== '')?userData.avatar:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHvGAtXsMuarSsgq3TfL0KW52ZiWPJZO5GXA&usqp=CAU%'%>>"
+                        class="img-fluid rounded-start" alt="user profile picture">
+                </div>
+                <div class="col-md-6 ms-5">
+                    <div class="card-body">
+                        <h2 class="card-title">
+                            <%= userData.firstName +' '+userData.lastName %></h2>
+              <h5 class="card-subtitle mb-2 text-muted"><%= userData.username %></h5>
+             <% if(currentUser && userData.email !== currentUser.email){ %>
+            <%  if(currentUser.following.includes(userData._id)){ %>
+                <button type="button" class="btn btn btn-primary" disabled>Following</button>
+            <%  } else { %>
+               <% if(currentUser.followers.includes(userData._id)){ %>
+                    <form action="/users/<%= userData._id %>/follow" method="get">
+                        <div class="container mt-3">
+                        <button class="btn btn-primary">Follow Back</button>
+                    </div>
+                      </form>
+              <%  } else { %>
+              <form action="/users/<%= userData._id %>/follow" method="get">
+                <div class="container mt-3">
+                <button class="btn btn-primary">Follow</button>
+            </div>
+              </form>
+          <%  } %>
+          <% } %>
+           <% } %>
+              <div class="container mt-3 mb-3">
+                <h4>Contact Details...</h4>
+                <dl class="row mt-3">
+                    <dt class="col-sm-6">Phone Number :</dt>
+                    <dd class="col-sm-6"><%= userData.phoneNo %></dd>
+                    <dt class="col-sm-6">Email :</dt>
+                    <dd class="col-sm-6"><a href="mailto:<%= userData.email %>"><%= userData.email %></a></dd>
+                  </dl>
+            </div>
+            <div class="container d-flex flex-row justify-content-center align-items-center">
+                <div class="me-3">
+                <p class="text-center mb-1"><%= userData.following.length %></p>
+                <strong>following</strong>
+            </div>
+            <div>
+                <p class="text-center mb-1"><%= userData.followers.length %></p>
+                <strong>followers</strong>
+            </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mb-3 mt-3">
+        <h2 class="mb-3">Following</h2>
+          <% for(let follower of userData.following){ %>
+            <a href="/users/<%= follower._id %>" class="text-decoration-none">
+            <div class="card d-flex flex-row mb-3" style="max-height:5rem ;">
+                <img src="<%= follower.avatar %>" alt="img" class="rounded-circle w-25 h-30 mt-2 ms-2" style="max-width:4rem ;">
+                <div class="card-body">
+                  <h5 class="card-title"><%= follower.firstName+' '+follower.lastName %></h5>
+                  <h6 class="card-subtitle mb-2 text-muted"><%= follower.username %></h6>
+                </div>
+              </div>
+            </a>
+         <%  } %>
+</div>

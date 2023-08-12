@@ -1,0 +1,23 @@
+<% layout('layouts/boilerplate.ejs') %>
+
+    <h1>Notifications</h1>
+
+    <ul>
+        <% for(let notification of allNotifications) { %>
+            <li>
+                <% if(notification.notifType==='post' ){ %>
+                    <a href="/campgrounds/<%= notification.notifId %>">
+                        <%= notification.username %> created a new campground!
+                    </a>
+                    <% } else if(notification.notifType==='review' ) { %>
+                        <a href="/campgrounds/<%= notification.notifId %>">
+                            <%= notification.username %> added a new comment on your post!
+                        </a>
+                        <% } else { %>
+                            <a href="/users/<%= notification.notifId %>">
+                                <%= notification.username %> started following you!
+                            </a>
+                            <% } %>
+            </li>
+            <% }; %>
+    </ul>

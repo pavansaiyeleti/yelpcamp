@@ -1,0 +1,49 @@
+<% layout('layouts/boilerplate.ejs') %>
+
+    <h1 class="text-center">New Campground</h1>
+    <div class="col-md-6 offset-md-3 mb-3">
+        <form action="/campgrounds" method="post" novalidate class="needs-validation" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label class="form-label" for="title">Title:</label>
+                <input class="form-control" type="text" name="title" id="title" placeholder="title" required>
+                <div class="valid-feedback">
+                    <span>looks good!</span>
+                </div>
+            </div>
+            <div class="mb-3 custom-file">
+                <label for="image" class="form-label">Add Images:</label>
+                <input class="form-control" type="file" id="image" name="image" multiple>
+                <label for="image" class="form-label">
+                    <span class="formFileText custom-file-label"></span>
+                </label>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="price">Price:</label>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1" id="price-label">$</span>
+                    <input class="form-control" type="text" name="price" id="price" placeholder="0.00" required>
+                </div>
+                <div class="valid-feedback">
+                    <span>looks good!</span>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="description">Description:</label>
+                <br>
+                <textarea class="form-control" name="description" id="description" rows="5"
+                    placeholder="Describe camp here!!!" required></textarea>
+                <div class="valid-feedback">
+                    <span>looks good!</span>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="location">Location:</label>
+                <input class="form-control" type="text" name="location" id="location" required>
+                <div class="valid-feedback">
+                    <span>looks good!</span>
+                </div>
+            </div>
+            <button class="btn btn-success mb-2">Add campground</button>
+        </form>
+        <a href="/campgrounds" class="mb-3">cancel</a>
+    </div>

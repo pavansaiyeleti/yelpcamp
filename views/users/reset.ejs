@@ -1,0 +1,15 @@
+<% layout('layouts/boilerplate.ejs') %>
+    <div class="container mb-3 d-flex flex-column justify-content-center align-items-center">
+        <h1 class="mb-3">Reset Password</h1>
+        <form action="/reset/<%= token %>" method="post" class="needs-validation" novalidate>
+            <div class="mb-3">
+                <label for="exampleInputPassword" class="form-label">New Password:</label>
+                <input type="password" class="form-control" id="exampleInputPassword" name="newPassword">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Confirm Password:</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" name="confirmPassword">
+            </div>
+            <button class="btn btn-info">Reset</button>
+        </form>
+    </div>
